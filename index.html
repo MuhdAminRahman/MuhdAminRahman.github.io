@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Your Name — Portfolio</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="container nav" role="banner">
+    <div class="brand">
+      <div class="logo">YN</div>
+      <div>
+        <div style="font-size:0.95rem">Your Name</div>
+        <div style="color:var(--muted);font-size:0.8rem">Designer / Developer</div>
+      </div>
+    </div>
+    <nav class="navlinks" role="navigation" aria-label="Main navigation">
+      <a href="/index.html">Home</a>
+      <a href="/about.html">About</a>
+      <a href="/academics.html">Academics</a>
+      <a href="/projects.html">Projects</a>
+      <a href="/hci.html">HCI</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="container" role="main">
+    <section class="hero">
+      <div class="hero-left">
+        <h1>Hi — I'm <span style="color:var(--accent)">Your Name</span></h1>
+        <p class="lead">A UTeM student focusing on HCI, UI/UX and interactive web experiences.</p>
+        <div class="cta-row">
+          <a class="btn" href="/projects.html">View Projects</a>
+          <a class="secondary" href="/about.html">About me</a>
+        </div>
+
+        <div style="margin-top:22px">
+          <h3>Featured work</h3>
+          <div class="grid">
+            <article class="card" tabindex="0" role="article" aria-labelledby="p1">
+              <h3 id="p1">Interactive Museum Guide</h3>
+              <p>Final-year project — AR + UX case study.</p>
+            </article>
+            <article class="card" tabindex="0" role="article" aria-labelledby="p2">
+              <h3 id="p2">3D Product Viewer</h3>
+              <p>Product demo with annotations — freelance.</p>
+            </article>
+            <article class="card" tabindex="0" role="article" aria-labelledby="p3">
+              <h3 id="p3">E-learning Module</h3>
+              <p>Web-based interactive learning module.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <div style="position:relative;">
+        <div id="three-header" style="width:100%;height:320px;border-radius:12px;overflow:hidden;background:#081020"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container footer" role="contentinfo">
+    <p>© <strong>Your Name</strong> — Built with accessibility & human-centered design.</p>
+  </footer>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — Your Name</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="container nav">
+    <div class="brand">
+      <div class="logo">YN</div>
+      <div><div style="font-size:0.95rem">Your Name</div><div style="color:var(--muted);font-size:0.8rem">Designer / Developer</div></div>
+    </div>
+    <nav class="navlinks" role="navigation">
+      <a href="/index.html">Home</a>
+      <a href="/about.html">About</a>
+      <a href="/academics.html">Academics</a>
+      <a href="/projects.html">Projects</a>
+      <a href="/hci.html">HCI</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h2>Contact</h2>
+
+    <section class="card">
+      <p>If you'd like to reach me directly, email <a href="mailto:you@domain.com">you@domain.com</a> or use the contact form below.</p>
+
+      <!-- Use Formspree or your backend; here is Formspree example (replace ID) -->
+      <form action="https://formspree.io/f/your-id" method="POST" aria-label="Contact form">
+        <label>Full name <input type="text" name="name" required></label><br><br>
+        <label>Email <input type="email" name="_replyto" required></label><br><br>
+        <label>Message <textarea name="message" rows="6" required></textarea></label><br><br>
+        <button class="btn" type="submit">Send Message</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="container footer">© Your Name</footer>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
