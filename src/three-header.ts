@@ -46,22 +46,6 @@ export default function createThreeHeader() {
   const placeholder = new THREE.Mesh(geom, mat);
   scene.add(placeholder);
 
-  // optional model
-  const loader = new GLTFLoader();
-  loader.load(
-    '/assets/models/scene.glb',
-    (gltf: GLTF) => {
-      try {
-        scene.remove(placeholder);
-        gltf.scene.scale.setScalar(0.9);
-        gltf.scene.position.set(0, -0.2, 0);
-        scene.add(gltf.scene);
-      } catch {}
-    },
-    undefined,
-    () => {}
-  );
-
   let pointerX = 0;
   let pointerY = 0;
 
