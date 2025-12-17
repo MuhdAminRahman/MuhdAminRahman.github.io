@@ -3,55 +3,446 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Professional portfolio showcasing design and development work." />
-  <title>Page Title — Your Name</title>
+  <meta name="description" content="Academic history and coursework of Muhammad Amin bin Abd Rahman - UTeM Computer Science student with comprehensive software development education." />
+  <title>Academics — Muhammad Amin bin Abd Rahman</title>
   
-  <!-- Add Google Fonts -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="icon" type="image/svg+xml" href="/public/assets/favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 </head>
 <body>
-  <header class="container nav">
-    <div class="brand">
-        <div class="logo">YN</div>
-        <div>
-            <div style="font-size:0.95rem">Your Name</div>
-            <div style="color:var(--muted);font-size:0.8rem">Designer / Developer</div>
+  <header>
+    <div class="container nav">
+      <a href="/" class="brand">
+        <div class="logo">MA</div>
+        <div class="brand-text">
+          <div class="brand-name">Muhammad Amin</div>
+          <div class="brand-title">Computer Science Student</div>
         </div>
+      </a>
+      
+      <nav class="navlinks" role="navigation" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/academics.html" class="active">Academics</a>
+        <a href="/projects.html">Projects</a>
+        <a href="/hci.html">HCI Principles</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
     </div>
-    <nav class="navlinks" role="navigation">
-      <a href="/index.html">Home</a>
-      <a href="/about.html">About</a>
-      <a href="/academics.html">Academics</a>
-      <a href="/projects.html">Projects</a>
-      <a href="/hci.html">HCI</a>
-      <a href="/contact.html">Contact</a>
-    </nav>
   </header>
 
   <main class="container">
-    <h2>Academic History</h2>
-    <div class="grid">
-      <article class="card">
-        <h3>Universiti Teknikal Malaysia Melaka (UTeM)</h3>
-        <p class="muted">BITS - BACHELOR'S DEGREE IN COMPUTER SCIENCE (SOFTWARE DEVELOPMENT) WITH HONOURS
- — 2023/</p>
-        <p>Relevant modules: HCI, Web Development, Graphics, Interaction Design. (Add GPA, awards, year)</p>
+    <div class="section-header">
+      <h1>Academic History</h1>
+      <p class="section-subtitle">Comprehensive Computer Science education at Universiti Teknikal Malaysia Melaka (UTeM)</p>
+    </div>
+
+    <div class="education-timeline">
+      <!-- Current Degree -->
+      <article class="timeline-item">
+        <div class="timeline-year">2023 – Present</div>
+        <div class="timeline-content card">
+          <div class="degree-header">
+            <h2>Bachelor of Computer Science (Software Development) with Honours</h2>
+            <div class="degree-badge">Current</div>
+          </div>
+          <h3 class="institution">Universiti Teknikal Malaysia Melaka (UTeM)</h3>
+          <p class="degree-desc">
+            Comprehensive software engineering program covering the full software development lifecycle, 
+            from requirements analysis to deployment and maintenance.
+          </p>
+          
+          <div class="key-focus-areas">
+            <h4>Key Focus Areas:</h4>
+            <div class="focus-tags">
+              <span class="focus-tag">Software Engineering</span>
+              <span class="focus-tag">Database Systems</span>
+              <span class="focus-tag">Web Development</span>
+              <span class="focus-tag">Mobile Applications</span>
+              <span class="focus-tag">System Architecture</span>
+              <span class="focus-tag">Security Principles</span>
+            </div>
+          </div>
+        </div>
       </article>
 
-      <article class="card">
-        <h3>Pusat Persediaan Sains dan Teknologi, Universiti Malaysia Sabah.</h3>
-        <p class="muted">Foundation in Science — 2016/2017</p>
-        <p>CGPA = 3.55, </p>
+      <!-- Foundation -->
+      <article class="timeline-item">
+        <div class="timeline-year">2016 – 2017</div>
+        <div class="timeline-content card">
+          <h2>Foundation in Science</h2>
+          <h3 class="institution">Pusat Persediaan Sains dan Teknologi, Universiti Malaysia Sabah</h3>
+          <div class="academic-performance">
+            <div class="performance-item">
+              <span class="performance-label">CGPA</span>
+              <span class="performance-value">3.55</span>
+            </div>
+            <div class="performance-item">
+              <span class="performance-label">Class</span>
+              <span class="performance-value">Dean's List</span>
+            </div>
+          </div>
+          <p>
+            Intensive science foundation program providing strong mathematical and scientific 
+            background for engineering and technology studies.
+          </p>
+        </div>
       </article>
     </div>
+
+    <!-- Comprehensive Coursework Section -->
+    <section class="coursework-section">
+      <div class="section-header">
+        <h2>Complete Coursework</h2>
+        <p class="section-subtitle">Comprehensive Computer Science curriculum covering theoretical foundations and practical applications</p>
+      </div>
+
+      <div class="course-categories">
+        <!-- Year 1 Semester 1 Courses -->
+        <article class="course-category card">
+          <div class="category-header">
+            <h3>Year 1 Semester 1: Foundations</h3>
+            <span class="category-badge">Core Fundamentals</span>
+          </div>
+          <ul class="course-list">
+            <li class="course-item">
+              <span class="course-code">BITP1113</span>
+              <span class="course-name">Programming Technique</span>
+            </li>
+            <li class="course-item">
+              <span class="course-code">BITI1213</span>
+              <span class="course-name">Linear Algebra and Discrete Mathematics</span>
+            </li>
+            <li class="course-item">
+              <span class="course-code">BITS1123</span>
+              <span class="course-name">Computer Organization and Architecture</span>
+            </li>
+            <li class="course-item">
+              <span class="course-code">BITM1113</span>
+              <span class="course-name">Multimedia System</span>
+            </li>
+            <li class="course-item">
+              <span class="course-code">BLHW1762</span>
+              <span class="course-name">Philosophy and Current Issues</span>
+            </li>
+            <li class="course-item">
+              <span class="course-code">BLLW1142</span>
+              <span class="course-name">English for Academic Purposes</span>
+            </li>
+          </ul>
+        </article>
+
+        <!-- Year 1 Semester 2 Courses -->
+        <article class="course-category card">
+          <div class="category-header">
+            <h3>Year 1 Semester 2: Foundations</h3>
+            <span class="category-badge">Core Fundamentals</span>
+          </div>
+          <ul class="course-list">
+            <li class="course-item">
+              <span class="course-code">BITI1223</span>
+              <span class="course-name">Calculus and Numerical Methods</span>
+            </li>
+            <li class="course-item">
+              <span class="course-code">BITP1123 </span>
+              <span class="course-name">Data Stucture and Algorithm </span>
+            </li>
+            <li class="course-item">
+              <span class="course-code">BITP2213</span>
+              <span class="course-name">Software Engineering </span>
+            </li>
+            <li class="course-item">
+              <span class="course-code">BITP1323</span>
+              <span class="course-name">Database</span>
+            </li>
+            <li class="course-item">
+              <span class="course-code">BLHW2772</span>
+              <span class="course-name">Appreciation of Ethics and Civilization</span>
+            </li>
+          </ul>
+        </article>
+
+        <!-- Year 2 Semester 1 Courses -->
+        <article class="course-category card">
+          <div class="category-header">
+            <h3>Year 2 Semester 1: Core Development</h3>
+            <span class="category-badge">Technical Core</span>
+          </div>
+          <ul class="course-list">
+            <li class="course-item">
+              <span class="course-code">BITI2233</span>
+              <span class="course-name">Statistics and Probability</span>
+            </li>
+            <li class="course-item">
+              <span class="course-code">BITP3113</span>
+              <span class="course-name">Object-oriented Programming</span>
+            </li>
+            <li class="course-item">
+              <span class="course-code">BITS1213</span>
+              <span class="course-name">Operating System</span>
+            </li>
+            <li class="course-item">
+              <span class="course-code">BITP211</span>
+              <span class="course-name">Algorithm Analysis</span>
+            </li>
+            <li class="course-item">
+              <span class="course-code">BITP2313</span>
+              <span class="course-name">Database Design</span>
+            </li>
+            <li class="course-item">
+              <span class="course-code">BITU2913</span>
+              <span class="course-name">Workshop I</span>
+            </li>
+          </ul>
+        </article>
+
+        <!-- Year 2 Semester 2 Courses -->
+        <article class="course-category card">
+          <div class="category-header">
+            <h3>Year 2 Semester 1: Core Development</h3>
+            <span class="category-badge">Technical Core</span>
+          </div>
+          <ul class="course-list">
+            <li class="course-item">
+              <span class="course-code">BITI1113</span>
+              <span class="course-name">Artificial Intelligence</span>
+            </li>
+            <li class="course-item">
+              <span class="course-code">BITS1313</span>
+              <span class="course-name">Data Communication and Networking</span>
+            </li>
+            <li class="course-item">
+              <span class="course-code">BITP2223</span>
+              <span class="course-name">Software Requirement and Design</span>
+            </li>
+            <li class="course-item">
+              <span class="course-code">BITP3253 </span>
+              <span class="course-name">Software Validation and Verification</span>
+            </li>
+            <li class="course-item">
+              <span class="course-code">BITP3123</span>
+              <span class="course-name">Distributed Application Development</span>
+            </li>
+            <li class="course-item">
+              <span class="course-code">BLLW2152</span>
+              <span class="course-name">Academic Writing</span>
+            </li>
+            <li class="course-item">
+              <span class="course-code">BLHC4032</span>
+              <span class="course-name">Critical and Creative Thinking</span>
+            </li>
+          </ul>
+        </article>
+
+        <!-- Year 3 Semester 1 Courses -->
+        <article class="course-category card">
+          <div class="category-header">
+            <h3>Year 3 Semester 1: Advanced Topics</h3>
+            <span class="category-badge">Specialization</span>
+          </div>
+          <ul class="course-list">
+            <li class="course-item">
+              <span class="course-code">BITM2313</span>
+              <span class="course-name">Human Computer Interaction</span>
+            </li>
+            <li class="course-item">
+              <span class="course-code">BITS3423 </span>
+              <span class="course-name">Information Technology Security</span>
+            </li>
+            <li class="course-item">
+              <span class="course-code">BITP3223 </span>
+              <span class="course-name">Software Project Management</span>
+            </li>
+            <li class="course-item">
+              <span class="course-code">BITP3453</span>
+              <span class="course-name">Mobile Application Development</span>
+            </li>
+            <li class="course-item">
+              <span class="course-code">BITU3923</span>
+              <span class="course-name">Workshop II </span>
+            </li>
+            <li class="course-item">
+              <span class="course-code">BLLW3162</span>
+              <span class="course-name">English for Professional Interaction</span>
+            </li>
+          </ul>
+        </article>
+
+        <!-- Year 3 Semester 2 Courses -->
+        <article class="course-category card">
+          <div class="category-header">
+            <h3>Year 3 Semester 2: Advanced Topics</h3>
+            <span class="category-badge">Specialization</span>
+          </div>
+          <ul class="course-list">
+            <li class="course-item">
+              <span class="course-code">BITU3973</span>
+              <span class="course-name">Final Year Project</span>
+            </li>
+            <li class="course-item">
+              <span class="course-code">BITP3423</span>
+              <span class="course-name">Special Topic in Software Engineering</span>
+            </li>
+            <li class="course-item">
+              <span class="course-code">BTMW4012</span>
+              <span class="course-name">Technology Entrepreneurship</span>
+            </li>
+          </ul>
+        </article>
+
+        <!-- Year 4 & Professional Courses -->
+        <article class="course-category card">
+          <div class="category-header">
+            <h3>Year 4: Professional Development</h3>
+            <span class="category-badge">Industry Ready</span>
+          </div>
+          <ul class="course-list">
+            <li class="course-item">
+              <span class="course-code">BITU3926</span>
+              <span class="course-name">Industrial Training</span>
+            </li>
+            <li class="course-item">
+              <span class="course-code">BITU3946</span>
+              <span class="course-name">Industrial Training Report</span>
+            </li>
+          </ul>
+        </article>
+
+        <!-- General Education -->
+        <article class="course-category card">
+          <div class="category-header">
+            <h3>General & Language Education</h3>
+            <span class="category-badge">Well-Rounded Skills</span>
+          </div>
+          <ul class="course-list">
+            <li class="course-item">
+              <span class="course-code">BLLW3162</span>
+              <span class="course-name">English for Professional Interaction</span>
+            </li>
+            <li class="course-item">
+              <span class="course-code">BLHC4032</span>
+              <span class="course-name">Critical And Creative Thinking</span>
+            </li>
+            <li class="course-item">
+              <span class="course-code">BLLW1212</span>
+              <span class="course-name">Arabic</span>
+            </li>
+          </ul>
+        </article>
+
+        <!-- Skills Developed Summary -->
+        <article class="course-category card highlight-card">
+          <div class="category-header">
+            <h3>Skills Developed</h3>
+            <span class="category-badge">Technical Competencies</span>
+          </div>
+          <div class="skills-summary">
+            <div class="skill-category">
+              <h4>Technical Skills</h4>
+              <ul>
+                <li>Full-Stack Web Development</li>
+                <li>Database Design & Administration</li>
+                <li>Mobile Application Development</li>
+                <li>Software Architecture & Design Patterns</li>
+                <li>Algorithm Design & Optimization</li>
+              </ul>
+            </div>
+            <div class="skill-category">
+              <h4>Professional Skills</h4>
+              <ul>
+                <li>Software Project Management</li>
+                <li>Requirements Analysis & Documentation</li>
+                <li>Software Testing & Quality Assurance</li>
+                <li>Team Collaboration & Agile Methodologies</li>
+                <li>Professional Communication</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Academic Projects Section -->
+    <section class="academic-projects">
+      <div class="section-header">
+        <h2>Academic Projects & Workshops</h2>
+        <p class="section-subtitle">Practical applications of coursework through hands-on projects and workshops</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <h3>Workshop I & II Projects</h3>
+          <p class="muted">Hands-on Technical Training</p>
+          <p>
+            Intensive workshop sessions focusing on practical implementation of software development 
+            concepts, including version control, collaborative coding, and project deployment.
+          </p>
+          <ul>
+            <li>Team-based software development projects</li>
+            <li>Git version control and collaborative workflows</li>
+            <li>Agile development methodology implementation</li>
+            <li>Software documentation and presentation</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Capstone Development</h3>
+          <p class="muted">Final Year Project Preparation</p>
+          <p>
+            Preparation for comprehensive final year project integrating knowledge from across 
+            the Computer Science curriculum to solve real-world software challenges.
+          </p>
+          <ul>
+            <li>Requirements analysis and project planning</li>
+            <li>System design and architecture development</li>
+            <li>Implementation of complex software systems</li>
+            <li>Testing, deployment, and documentation</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="view-projects-cta">
+        <a href="/projects.html" class="btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+          View My Technical Projects
+        </a>
+      </div>
+    </section>
   </main>
 
-  <footer class="container footer">© Your Name</footer>
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>© <strong>Muhammad Amin bin Abd Rahman</strong> — BSc Computer Science (Software Development) with Honours</p>
+      <div class="social-links">
+        <a href="https://github.com/MuhdAminRahman" aria-label="GitHub" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.45 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+          </svg>
+        </a>
+        <a href="https://linkedin.com/in/amin-rahman-a5000b210" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+            <rect x="2" y="9" width="4" height="12"/>
+            <circle cx="4" cy="4" r="2"/>
+          </svg>
+        </a>
+        <a href="mailto:lonemin1@gmail.com" aria-label="Email">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
   <script type="module" src="/src/main.ts"></script>
 </body>
 </html>

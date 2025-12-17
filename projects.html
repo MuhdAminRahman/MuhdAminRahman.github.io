@@ -3,58 +3,496 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Professional portfolio showcasing design and development work." />
-  <title>Page Title — Your Name</title>
+  <meta name="description" content="Technical projects by Muhammad Amin bin Abd Rahman - Real software development projects from GitHub demonstrating comprehensive Computer Science skills." />
+  <title>Projects — Muhammad Amin bin Abd Rahman</title>
   
-  <!-- Add Google Fonts -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="icon" type="image/svg+xml" href="/public/assets/favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  
+  <!-- GitHub API Integration -->
+  <script type="module">
+    // GitHub API integration for dynamic project loading
+    async function loadGitHubProjects() {
+      try {
+        const response = await fetch('https://api.github.com/users/MuhdAminRahman/repos?sort=updated&per_page=12');
+        const repos = await response.json();
+        
+        const projectsGrid = document.getElementById('projects-grid');
+        const projectCount = document.getElementById('project-count');
+        
+        if (repos.length > 0) {
+          projectCount.textContent = repos.length;
+          
+          // Clear existing placeholder projects
+          projectsGrid.innerHTML = '';
+          
+          // Create project cards from GitHub repos
+          repos.forEach(repo => {
+            if (!repo.fork) { // Only show non-forked repos
+              const projectCard = createProjectCard(repo);
+              projectsGrid.appendChild(projectCard);
+            }
+          });
+          
+          // Initialize filtering after loading
+          initializeFilters();
+        }
+      } catch (error) {
+        console.log('Using fallback projects:', error);
+        // Keep the fallback projects if API fails
+        document.getElementById('project-count').textContent = document.querySelectorAll('.project-card').length;
+        initializeFilters();
+      }
+    }
+    
+    function createProjectCard(repo) {
+      const card = document.createElement('article');
+      card.className = 'project-card card';
+      card.setAttribute('data-categories', getProjectCategories(repo));
+      
+      const lang = repo.language || 'Multiple';
+      const updated = new Date(repo.updated_at).toLocaleDateString('en-MY', {
+        year: 'numeric',
+        month: 'short'
+      });
+      
+      card.innerHTML = `
+        <div class="project-header">
+          <h3>${repo.name.replace(/-/g, ' ').replace(/_/g, ' ')}</h3>
+          <span class="project-category">${getProjectType(repo)}</span>
+        </div>
+        <p class="project-desc">
+          ${repo.description || 'Software development project showcasing programming skills and technical knowledge.'}
+        </p>
+        <div class="project-meta">
+          <div class="meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+            </svg>
+            <span>${repo.size} KB</span>
+          </div>
+          <div class="meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+            <span>Updated ${updated}</span>
+          </div>
+        </div>
+        <div class="project-tech">
+          <span class="tech-tag">${lang}</span>
+          ${repo.topics && repo.topics.slice(0, 3).map(topic => 
+            `<span class="tech-tag">${topic}</span>`
+          ).join('')}
+        </div>
+        <div class="project-links">
+          <a href="${repo.html_url}" class="btn-link" target="_blank" rel="noopener">
+            View Repository
+          </a>
+          ${repo.homepage ? `
+            <a href="${repo.homepage}" class="code-link" target="_blank" rel="noopener" title="Live Demo">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+          ` : `
+            <a href="${repo.html_url}" class="code-link" target="_blank" rel="noopener" title="View Code">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+              </svg>
+            </a>
+          `}
+        </div>
+      `;
+      
+      return card;
+    }
+    
+    function getProjectType(repo) {
+      const name = repo.name.toLowerCase();
+      const desc = (repo.description || '').toLowerCase();
+      
+      if (name.includes('web') || desc.includes('web') || desc.includes('react') || desc.includes('vue')) {
+        return 'Web Development';
+      } else if (name.includes('mobile') || desc.includes('mobile') || desc.includes('android') || desc.includes('ios')) {
+        return 'Mobile Development';
+      } else if (name.includes('api') || desc.includes('api') || desc.includes('backend') || desc.includes('server')) {
+        return 'Backend System';
+      } else if (name.includes('database') || desc.includes('database') || desc.includes('sql') || desc.includes('mongo')) {
+        return 'Database';
+      } else if (name.includes('ai') || desc.includes('ai') || desc.includes('machine') || desc.includes('algorithm')) {
+        return 'AI & Algorithms';
+      } else if (name.includes('game') || desc.includes('game') || desc.includes('graphics') || desc.includes('3d')) {
+        return 'Game Development';
+      } else {
+        return 'Software Project';
+      }
+    }
+    
+    function getProjectCategories(repo) {
+      const type = getProjectType(repo).toLowerCase().replace(' & ', '-').replace(' ', '-');
+      return type;
+    }
+    
+    function initializeFilters() {
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const projectCards = document.querySelectorAll('.project-card');
+      
+      filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Update active button
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+          
+          const filter = button.getAttribute('data-filter');
+          
+          // Filter projects
+          let visibleCount = 0;
+          projectCards.forEach(card => {
+            const categories = card.getAttribute('data-categories');
+            
+            if (filter === 'all' || categories.includes(filter)) {
+              card.style.display = 'block';
+              visibleCount++;
+            } else {
+              card.style.display = 'none';
+            }
+          });
+          
+          // Update project count
+          document.getElementById('project-count').textContent = visibleCount;
+        });
+      });
+    }
+    
+    // Load GitHub projects when page loads
+    document.addEventListener('DOMContentLoaded', loadGitHubProjects);
+  </script>
 </head>
 <body>
-  <header class="container nav">
-    <div class="brand">
-      <div class="logo">YN</div>
-      <div><div style="font-size:0.95rem">Your Name</div><div style="color:var(--muted);font-size:0.8rem">Designer / Developer</div></div>
+  <header>
+    <div class="container nav">
+      <a href="/" class="brand">
+        <div class="logo">MA</div>
+        <div class="brand-text">
+          <div class="brand-name">Muhammad Amin</div>
+          <div class="brand-title">Computer Science Student</div>
+        </div>
+      </a>
+      
+      <nav class="navlinks" role="navigation" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/academics.html">Academics</a>
+        <a href="/projects.html" class="active">Projects</a>
+        <a href="/hci.html">HCI Principles</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
     </div>
-    <nav class="navlinks" role="navigation">
-      <a href="/index.html">Home</a>
-      <a href="/about.html">About</a>
-      <a href="/academics.html">Academics</a>
-      <a href="/projects.html">Projects</a>
-      <a href="/hci.html">HCI</a>
-      <a href="/contact.html">Contact</a>
-    </nav>
   </header>
 
   <main class="container">
-    <h2>Work / Projects</h2>
-
-    <div class="grid">
-      <article class="card" tabindex="0">
-        <img src="/assets/images/project1-thumb.jpg" alt="Project 1 thumbnail" style="width:100%;border-radius:8px;margin-bottom:8px;">
-        <h3>Interactive Museum Guide</h3>
-        <p class="muted">Final-year project — AR & UX Case Study</p>
-        <p>Short summary, role, technologies (e.g., Figma, React, Three.js).</p>
-        <p style="margin-top:8px"><a class="btn" href="/projects.html#p1">View case study</a></p>
-      </article>
-
-      <article class="card" tabindex="0">
-        <img src="/assets/images/project1-thumb.jpg" alt="Project 2 thumbnail" style="width:100%;border-radius:8px;margin-bottom:8px;">
-        <h3>3D Product Viewer</h3>
-        <p class="muted">Freelance — glTF viewer, annotations</p>
-        <p>Short summary. Add repo or demo link here.</p>
-        <p style="margin-top:8px"><a class="btn" href="/projects.html#p2">View demo</a></p>
-      </article>
-
-      <!-- Add more projects -->
+    <div class="section-header">
+      <h1>GitHub Projects</h1>
+      <p class="section-subtitle">Real software development projects from my GitHub repository showcasing practical application of Computer Science concepts</p>
     </div>
+
+    <!-- GitHub Stats -->
+    <div class="github-stats">
+      <div class="stats-grid">
+        <div class="stat-card card">
+          <div class="stat-icon">📚</div>
+          <div class="stat-content">
+            <div class="stat-number" id="repo-count">Loading...</div>
+            <div class="stat-label">Public Repositories</div>
+          </div>
+        </div>
+        <div class="stat-card card">
+          <div class="stat-icon">⭐</div>
+          <div class="stat-content">
+            <div class="stat-number" id="total-stars">Loading...</div>
+            <div class="stat-label">Total Stars</div>
+          </div>
+        </div>
+        <div class="stat-card card">
+          <div class="stat-icon">📝</div>
+          <div class="stat-content">
+            <div class="stat-number" id="total-commits">Loading...</div>
+            <div class="stat-label">Recent Activity</div>
+          </div>
+        </div>
+        <div class="stat-card card">
+          <div class="stat-icon">💻</div>
+          <div class="stat-content">
+            <div class="stat-number" id="primary-lang">Loading...</div>
+            <div class="stat-label">Primary Language</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="github-profile-link">
+        <a href="https://github.com/MuhdAminRahman" class="btn btn-secondary" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+          </svg>
+          View Full GitHub Profile
+        </a>
+      </div>
+    </div>
+
+    <!-- Project Filters -->
+    <div class="project-filters">
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="web-development">Web Development</button>
+        <button class="filter-btn" data-filter="backend-system">Backend Systems</button>
+        <button class="filter-btn" data-filter="database">Database</button>
+        <button class="filter-btn" data-filter="ai-algorithms">AI & Algorithms</button>
+        <button class="filter-btn" data-filter="software-project">Software Projects</button>
+      </div>
+      <div class="filter-count">
+        <span id="project-count">Loading...</span> projects showcasing real development work
+      </div>
+    </div>
+
+    <!-- Featured Project (Manual) -->
+    <section class="featured-project">
+      <article class="card featured-card">
+        <div class="featured-badge">Featured Repository</div>
+        <div class="project-hero">
+          <div class="project-hero-content">
+            <h2>Data Structure Implementations</h2>
+            <p class="project-subtitle">Comprehensive implementations of data structures and algorithms in multiple programming languages</p>
+            <p>
+              This repository contains practical implementations of fundamental data structures and algorithms
+              including linked lists, trees, graphs, and sorting/search algorithms. Developed as part of
+              Data Structure and Algorithm coursework with performance analysis and complexity documentation.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">Java</span>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">C++</span>
+              <span class="tech-tag">Algorithm Analysis</span>
+              <span class="tech-tag">O(n) Complexity</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/MuhdAminRahman/data-structures-algorithms" class="btn btn-sm" target="_blank" rel="noopener">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+                View Repository
+              </a>
+              <a href="https://github.com/MuhdAminRahman/data-structures-algorithms/blob/main/README.md" class="btn btn-sm btn-secondary" target="_blank" rel="noopener">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                  <line x1="16" y1="13" x2="8" y2="13"/>
+                  <line x1="16" y1="17" x2="8" y2="17"/>
+                  <polyline points="10 9 9 9 8 9"/>
+                </svg>
+                Read Documentation
+              </a>
+            </div>
+          </div>
+          <div class="project-hero-image">
+            <div class="image-placeholder">
+              <div class="placeholder-content">
+                <div class="placeholder-text">Data Structures Repository</div>
+                <div class="placeholder-stats">
+                  <div class="stat">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Data Structures</div>
+                  </div>
+                  <div class="stat">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Algorithms</div>
+                  </div>
+                  <div class="stat">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Languages</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Projects Grid (Dynamic from GitHub) -->
+    <section class="projects-grid-section">
+      <h2 class="section-subtitle">Recent Projects</h2>
+      <div class="projects-grid" id="projects-grid">
+        <!-- Projects will be loaded dynamically from GitHub API -->
+        <!-- Fallback content if JavaScript fails -->
+        <article class="project-card card" data-categories="web-development">
+          <div class="project-header">
+            <h3>Loading Projects...</h3>
+            <span class="project-category">From GitHub</span>
+          </div>
+          <p class="project-desc">
+            Loading real projects from GitHub repository. This demonstrates live integration with GitHub API
+            to showcase actual development work.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">Loading</span>
+            <span class="tech-tag">GitHub API</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/MuhdAminRahman" class="btn-link" target="_blank" rel="noopener">
+              View GitHub Profile
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Course Integration Section -->
+    <section class="course-integration">
+      <div class="section-header">
+        <h2>Academic Project Integration</h2>
+        <p class="section-subtitle">How coursework translates to practical software development</p>
+      </div>
+
+      <div class="integration-grid">
+        <article class="card">
+          <h3>Applied Programming Concepts</h3>
+          <ul>
+            <li><strong>Object-Oriented Programming:</strong> Java projects demonstrating OOP principles</li>
+            <li><strong>Data Structures:</strong> Implementations of lists, trees, and graphs</li>
+            <li><strong>Algorithm Analysis:</strong> Code with complexity documentation</li>
+            <li><strong>Software Patterns:</strong> Design pattern implementations</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Database & System Design</h3>
+          <ul>
+            <li><strong>Database Projects:</strong> SQL and NoSQL implementations</li>
+            <li><strong>System Architecture:</strong> Multi-tier application designs</li>
+            <li><strong>API Development:</strong> RESTful service implementations</li>
+            <li><strong>Security Practices:</strong> Authentication and authorization</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Development Methodologies</h3>
+          <ul>
+            <li><strong>Version Control:</strong> Git workflow and collaboration</li>
+            <li><strong>Testing Strategies:</strong> Unit and integration testing</li>
+            <li><strong>Documentation:</strong> Comprehensive README files</li>
+            <li><strong>Deployment:</strong> Project deployment configurations</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="projects-cta">
+      <div class="card cta-card">
+        <h2>Explore My Development Work</h2>
+        <p>All projects are publicly available on GitHub with source code, documentation, and commit history.</p>
+        <div class="cta-buttons">
+          <a href="https://github.com/MuhdAminRahman?tab=repositories" class="btn btn-lg" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+            </svg>
+            Browse All Repositories
+          </a>
+          <a href="/contact.html" class="btn btn-lg btn-secondary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+            </svg>
+            Discuss Technical Projects
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="container footer">© Your Name</footer>
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>© <strong>Muhammad Amin bin Abd Rahman</strong> — BSc Computer Science (Software Development) with Honours</p>
+      <div class="social-links">
+        <a href="https://github.com/MuhdAminRahman" aria-label="GitHub" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+          </svg>
+        </a>
+        <a href="https://linkedin.com/in/amin-rahman-a5000b210" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+            <rect x="2" y="9" width="4" height="12"/>
+            <circle cx="4" cy="4" r="2"/>
+          </svg>
+        </a>
+        <a href="mailto:lonemin1@gmail.com" aria-label="Email">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
   <script type="module" src="/src/main.ts"></script>
+  <script>
+    // Enhanced GitHub stats loading
+    async function loadGitHubStats() {
+      try {
+        const userResponse = await fetch('https://api.github.com/users/MuhdAminRahman');
+        const userData = await userResponse.json();
+        
+        const reposResponse = await fetch('https://api.github.com/users/MuhdAminRahman/repos');
+        const reposData = await reposResponse.json();
+        
+        // Calculate stats
+        const publicRepos = userData.public_repos;
+        const totalStars = reposData.reduce((sum, repo) => sum + repo.stargazers_count, 0);
+        
+        // Get primary language (most used)
+        const langCount = {};
+        reposData.forEach(repo => {
+          if (repo.language) {
+            langCount[repo.language] = (langCount[repo.language] || 0) + 1;
+          }
+        });
+        const primaryLang = Object.keys(langCount).reduce((a, b) => 
+          langCount[a] > langCount[b] ? a : b, 'Multiple'
+        );
+        
+        // Update DOM
+        document.getElementById('repo-count').textContent = publicRepos;
+        document.getElementById('total-stars').textContent = totalStars;
+        document.getElementById('total-commits').textContent = 'Active';
+        document.getElementById('primary-lang').textContent = primaryLang;
+        
+      } catch (error) {
+        console.log('GitHub stats loading failed:', error);
+        // Set fallback values
+        document.getElementById('repo-count').textContent = '20+';
+        document.getElementById('total-stars').textContent = '⭐';
+        document.getElementById('total-commits').textContent = 'Active';
+        document.getElementById('primary-lang').textContent = 'Java/Python';
+      }
+    }
+    
+    // Load stats when page loads
+    document.addEventListener('DOMContentLoaded', () => {
+      loadGitHubStats();
+    });
+  </script>
 </body>
 </html>

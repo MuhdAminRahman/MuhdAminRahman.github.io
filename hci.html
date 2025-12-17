@@ -3,58 +3,441 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Professional portfolio showcasing design and development work." />
-  <title>Page Title — Your Name</title>
+  <meta name="description" content="Human-Computer Interaction principles applied by Muhammad Amin bin Abd Rahman - How HCI concepts inform software development within a comprehensive Computer Science education." />
+  <title>HCI Principles — Muhammad Amin bin Abd Rahman</title>
   
-  <!-- Add Google Fonts -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="icon" type="image/svg+xml" href="/public/assets/favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 </head>
 <body>
-  <header class="container nav">
-    <div class="brand">
-      <div class="logo">YN</div>
-      <div><div style="font-size:0.95rem">Your Name</div><div style="color:var(--muted);font-size:0.8rem">Designer / Developer</div></div>
+  <header>
+    <div class="container nav">
+      <a href="/" class="brand">
+        <div class="logo">MA</div>
+        <div class="brand-text">
+          <div class="brand-name">Muhammad Amin</div>
+          <div class="brand-title">Computer Science Student</div>
+        </div>
+      </a>
+      
+      <nav class="navlinks" role="navigation" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/academics.html">Academics</a>
+        <a href="/projects.html">Projects</a>
+        <a href="/hci.html" class="active">HCI Principles</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
     </div>
-    <nav class="navlinks" role="navigation">
-      <a href="/index.html">Home</a>
-      <a href="/about.html">About</a>
-      <a href="/academics.html">Academics</a>
-      <a href="/projects.html">Projects</a>
-      <a href="/hci.html">HCI</a>
-      <a href="/contact.html">Contact</a>
-    </nav>
   </header>
 
   <main class="container">
-    <h2>HCI Reflection</h2>
+    <div class="section-header">
+      <h1>HCI Design Principles</h1>
+      <p class="section-subtitle">Human-Computer Interaction concepts applied within comprehensive software development practice</p>
+    </div>
 
-    <section class="card">
-      <h3>Information organisation</h3>
-      <p>Top navigation, consistent templates, progressive disclosure and grouping of project artifacts.</p>
+    <!-- Introduction Card -->
+    <section class="hci-intro card">
+      <div class="intro-content">
+        <h2>Integrating HCI with Software Engineering</h2>
+        <p>
+          As part of my Computer Science education at UTeM, I studied Human-Computer Interaction (BITM2313) 
+          which provided essential principles for designing user-centered software systems. This page demonstrates 
+          how HCI concepts are integrated with other software engineering practices in my work.
+        </p>
+        <div class="course-context">
+          <div class="context-badge">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+            <span>Course: BITM2313 - Human Computer Interaction</span>
+          </div>
+          <div class="context-badge">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+            <span>Semester: Year 3, 2025/2026</span>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="card">
-      <h3>UI design & Design principles</h3>
-      <ul>
-        <li>Visual hierarchy, spacing, typography</li>
-        <li>Affordances and feedback (hover/focus states)</li>
-        <li>Fitts' law: large touch targets, Hick's law: minimize choices on critical paths</li>
-        <li>Gestalt grouping & consistency</li>
-      </ul>
+    <!-- HCI Principles Applied -->
+    <section class="hci-principles">
+      <h2 class="section-subtitle">HCI Principles in Practice</h2>
+      
+      <div class="principles-grid">
+        <article class="principle-card card">
+          <div class="principle-icon">🎯</div>
+          <h3>User-Centered Design</h3>
+          <p class="principle-desc">
+            Designing systems around user needs, capabilities, and limitations rather than forcing 
+            users to adapt to system requirements.
+          </p>
+          <div class="application-example">
+            <h4>Applied in Projects:</h4>
+            <ul>
+              <li>Conducting user research for project requirements</li>
+              <li>Creating user personas and scenarios</li>
+              <li>Iterative design based on user feedback</li>
+            </ul>
+          </div>
+          <div class="technical-integration">
+            <span class="integration-tag">User Stories</span>
+            <span class="integration-tag">Persona Development</span>
+            <span class="integration-tag">Usability Testing</span>
+          </div>
+        </article>
+
+        <article class="principle-card card">
+          <div class="principle-icon">♿</div>
+          <h3>Accessibility & Inclusivity</h3>
+          <p class="principle-desc">
+            Ensuring software is usable by people with diverse abilities, including visual, auditory, 
+            motor, and cognitive considerations.
+          </p>
+          <div class="application-example">
+            <h4>Applied in Projects:</h4>
+            <ul>
+              <li>Implementing ARIA labels and semantic HTML</li>
+              <li>Ensuring keyboard navigation support</li>
+              <li>Testing with screen readers</li>
+              <li>Providing alternative text for images</li>
+            </ul>
+          </div>
+          <div class="technical-integration">
+            <span class="integration-tag">WCAG Compliance</span>
+            <span class="integration-tag">Semantic HTML</span>
+            <span class="integration-tag">Keyboard Navigation</span>
+          </div>
+        </article>
+
+        <article class="principle-card card">
+          <div class="principle-icon">⚡</div>
+          <h3>Efficiency & Performance</h3>
+          <p class="principle-desc">
+            Optimizing interaction efficiency through predictable interfaces, quick response times, 
+            and minimizing user effort.
+          </p>
+          <div class="application-example">
+            <h4>Applied in Projects:</h4>
+            <ul>
+              <li>Implementing Fitts' Law for button placement</li>
+              <li>Reducing cognitive load through clear information hierarchy</li>
+              <li>Optimizing response times in web applications</li>
+              <li>Applying Hick's Law for menu design</li>
+            </ul>
+          </div>
+          <div class="technical-integration">
+            <span class="integration-tag">Fitts' Law</span>
+            <span class="integration-tag">Hick's Law</span>
+            <span class="integration-tag">Performance Metrics</span>
+          </div>
+        </article>
+
+        <article class="principle-card card">
+          <div class="principle-icon">🔄</div>
+          <h3>Consistency & Standards</h3>
+          <p class="principle-desc">
+            Maintaining consistent design patterns and following established conventions to reduce 
+            learning curves and user errors.
+          </p>
+          <div class="application-example">
+            <h4>Applied in Projects:</h4>
+            <ul>
+              <li>Following platform design guidelines</li>
+              <li>Creating reusable component libraries</li>
+              <li>Maintaining consistent navigation patterns</li>
+              <li>Using standard icons and terminology</li>
+            </ul>
+          </div>
+          <div class="technical-integration">
+            <span class="integration-tag">Design Systems</span>
+            <span class="integration-tag">Component Libraries</span>
+            <span class="integration-tag">UI Patterns</span>
+          </div>
+        </article>
+
+        <article class="principle-card card">
+          <div class="principle-icon">💡</div>
+          <h3>Feedback & Affordances</h3>
+          <p class="principle-desc">
+            Providing clear system feedback and designing interfaces that suggest their functionality 
+            through visual cues and affordances.
+          </p>
+          <div class="application-example">
+            <h4>Applied in Projects:</h4>
+            <ul>
+              <li>Implementing loading states and progress indicators</li>
+              <li>Designing clear hover and focus states</li>
+              <li>Providing immediate feedback for user actions</li>
+              <li>Using visual hierarchy to indicate importance</li>
+            </ul>
+          </div>
+          <div class="technical-integration">
+            <span class="integration-tag">Visual Feedback</span>
+            <span class="integration-tag">Affordance Design</span>
+            <span class="integration-tag">State Management</span>
+          </div>
+        </article>
+
+        <article class="principle-card card">
+          <div class="principle-icon">🧠</div>
+          <h3>Cognitive Considerations</h3>
+          <p class="principle-desc">
+            Designing for human memory, attention, and learning capabilities by minimizing cognitive 
+            load and supporting mental models.
+          </p>
+          <div class="application-example">
+            <h4>Applied in Projects:</h4>
+            <ul>
+              <li>Chunking information for better memory</li>
+              <li>Providing clear error messages and recovery paths</li>
+              <li>Designing for both novice and expert users</li>
+              <li>Supporting recognition over recall</li>
+            </ul>
+          </div>
+          <div class="technical-integration">
+            <span class="integration-tag">Cognitive Load</span>
+            <span class="integration-tag">Mental Models</span>
+            <span class="integration-tag">Error Prevention</span>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <section class="card">
-      <h3>Interaction styles</h3>
-      <p>Direct manipulation (3D header), keyboard navigation, modal project case studies, media players.</p>
+    <!-- Portfolio Implementation Examples -->
+    <section class="portfolio-implementation">
+      <div class="section-header">
+        <h2>HCI Implementation in This Portfolio</h2>
+        <p class="section-subtitle">How HCI principles are applied in the design and development of this website</p>
+      </div>
+
+      <div class="implementation-grid">
+        <article class="implementation-card card">
+          <h3>Information Architecture</h3>
+          <div class="implementation-details">
+            <div class="detail-item">
+              <h4>Clear Navigation</h4>
+              <p>Consistent navigation bar with clear labels and active state indicators</p>
+            </div>
+            <div class="detail-item">
+              <h4>Content Hierarchy</h4>
+              <p>Clear typographic hierarchy using proper heading levels (H1-H4)</p>
+            </div>
+            <div class="detail-item">
+              <h4>Progressive Disclosure</h4>
+              <p>Complex information revealed gradually through expandable sections</p>
+            </div>
+          </div>
+          <div class="hci-principle">
+            <span class="principle-tag">Gestalt Principles</span>
+            <span class="principle-tag">Information Scent</span>
+          </div>
+        </article>
+
+        <article class="implementation-card card">
+          <h3>Interaction Design</h3>
+          <div class="implementation-details">
+            <div class="detail-item">
+              <h4>Direct Manipulation</h4>
+              <p>Interactive 3D header responds to mouse movement for engagement</p>
+            </div>
+            <div class="detail-item">
+              <h4>Feedback Systems</h4>
+              <p>Visual feedback on all interactive elements (hover states, focus indicators)</p>
+            </div>
+            <div class="detail-item">
+              <h4>Consistent Controls</h4>
+              <p>Uniform button styles and interaction patterns across all pages</p>
+            </div>
+          </div>
+          <div class="hci-principle">
+            <span class="principle-tag">Affordances</span>
+            <span class="principle-tag">Consistency</span>
+          </div>
+        </article>
+
+        <article class="implementation-card card">
+          <h3>Accessibility Features</h3>
+          <div class="implementation-details">
+            <div class="detail-item">
+              <h4>Keyboard Navigation</h4>
+              <p>All interactive elements accessible via keyboard (Tab, Enter, Space)</p>
+            </div>
+            <div class="detail-item">
+              <h4>Screen Reader Support</h4>
+              <p>Proper ARIA labels, semantic HTML, and alternative text for images</p>
+            </div>
+            <div class="detail-item">
+              <h4>Color Contrast</h4>
+              <p>WCAG AA compliant color contrast ratios throughout the interface</p>
+            </div>
+          </div>
+          <div class="hci-principle">
+            <span class="principle-tag">Universal Design</span>
+            <span class="principle-tag">WCAG Guidelines</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Integration with Other CS Concepts -->
+    <section class="cs-integration">
+      <div class="section-header">
+        <h2>HCI in Broader Computer Science Context</h2>
+        <p class="section-subtitle">How HCI principles integrate with other software engineering concepts</p>
+      </div>
+
+      <div class="integration-timeline">
+        <div class="timeline-item">
+          <div class="timeline-marker">1</div>
+          <div class="timeline-content card">
+            <h3>Software Engineering Integration</h3>
+            <p>
+              HCI principles inform requirements gathering and system design phases in Software Engineering (BITP2213), 
+              ensuring user needs drive technical specifications.
+            </p>
+            <div class="course-connection">
+              <span class="course-tag">BITP2213 - Software Engineering</span>
+              <span class="connection-arrow">→</span>
+              <span class="hci-tag">User Requirements</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-marker">2</div>
+          <div class="timeline-content card">
+            <h3>Database Design Considerations</h3>
+            <p>
+              User interface design decisions in HCI influence database schema design (BITP2313) to support efficient 
+              data retrieval and manipulation patterns identified through user research.
+            </p>
+            <div class="course-connection">
+              <span class="course-tag">BITP2313 - Database Design</span>
+              <span class="connection-arrow">→</span>
+              <span class="hci-tag">Data Presentation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-marker">3</div>
+          <div class="timeline-content card">
+            <h3>Web Application Development</h3>
+            <p>
+              HCI usability testing informs frontend architecture decisions in Web Application Development (BITM2113), 
+              guiding component design and state management strategies.
+            </p>
+            <div class="course-connection">
+              <span class="course-tag">BITM2113 - Web Application Development</span>
+              <span class="connection-arrow">→</span>
+              <span class="hci-tag">Usability Patterns</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-marker">4</div>
+          <div class="timeline-content card">
+            <h3>Interactive Media & Graphics</h3>
+            <p>
+              HCI principles of engagement and feedback drive technical implementation choices in Interactive Media 
+              Authoring (BITM1123) and graphics programming.
+            </p>
+            <div class="course-connection">
+              <span class="course-tag">BITM1123 - Interactive Media Authoring</span>
+              <span class="connection-arrow">→</span>
+              <span class="hci-tag">Engagement Design</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Professional Application -->
+    <section class="professional-application">
+      <div class="application-card card">
+        <div class="application-content">
+          <h2>Professional Development Perspective</h2>
+          <p>
+            While HCI provides essential user-centered design principles, my comprehensive Computer Science 
+            education ensures these concepts are implemented within robust technical frameworks. This balanced 
+            approach allows for creating software that is both user-friendly and technically sound.
+          </p>
+          <div class="application-points">
+            <div class="point">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              <span>HCI informs the "what" and "why" of design decisions</span>
+            </div>
+            <div class="point">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              <span>Software engineering provides the "how" of implementation</span>
+            </div>
+            <div class="point">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              <span>Database and systems knowledge ensures scalability and performance</span>
+            </div>
+          </div>
+        </div>
+        <div class="application-cta">
+          <p>Interested in seeing how these principles are applied in actual projects?</p>
+          <a href="/projects.html" class="btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+            View Technical Projects
+          </a>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer class="container footer">© Your Name</footer>
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>© <strong>Muhammad Amin bin Abd Rahman</strong> — BSc Computer Science (Software Development) with Honours</p>
+      <div class="social-links">
+        <a href="https://github.com/MuhdAminRahman" aria-label="GitHub" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+          </svg>
+        </a>
+        <a href="https://linkedin.com/in/amin-rahman-a5000b210" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+            <rect x="2" y="9" width="4" height="12"/>
+            <circle cx="4" cy="4" r="2"/>
+          </svg>
+        </a>
+        <a href="mailto:lonemin1@gmail.com" aria-label="Email">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
   <script type="module" src="/src/main.ts"></script>
 </body>
 </html>
