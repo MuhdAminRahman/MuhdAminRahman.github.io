@@ -958,6 +958,8 @@ ul li::before {
 
 .timeline-year {
   width: 80px;
+  position:relative;
+  left: -80px;
   flex-shrink: 0;
   text-align: right;
   font-weight: 700;
@@ -1137,7 +1139,6 @@ ul li::before {
 .course-item {
   display: flex;
   gap: var(--space-sm);
-  padding: var(--space-sm) 0;
   border-bottom: 1px solid var(--border-light);
   transition: background-color var(--transition-fast);
 }
@@ -1177,9 +1178,6 @@ ul li::before {
 
 .skills-summary {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-lg);
-  margin-top: var(--space-sm);
 }
 
 .skill-category h4 {
